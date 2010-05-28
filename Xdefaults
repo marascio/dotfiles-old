@@ -1,0 +1,95 @@
+! ---------------------------------------------------------------------------
+! vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:sts=4:ft=xdefaults:
+! ---------------------------------------------------------------------------  
+
+! -- [ Terminal ] --
+
+URxvt.title:          urxvt
+URxvt.termName:       rxvt-256color
+URxvt.perl-ext:       default, matcher
+URxvt.urlLauncher:    firefox
+URxvt.matcher.button: true
+URxvt.scrollBar:      false
+
+! --[ Fonts ] --
+
+Xft.dpi:        96
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.antialias:  true
+Xft.rgba:       rgb
+
+! Terminus
+URxvt.font:     xft:terminus:pixelsize=12
+URxvt.boldFont: xft:terminus:pixelsize=12:bold
+
+! Inconsolata
+!URxvt.font:     xft:inconsolata:pixelsize=12
+!URxvt.boldFont: xft:inconsolata:pixelsize=12:bold
+
+! Consolas
+!URxvt.font:     xft:consolas:pixelsize=11
+!URxvt.boldFont: xft:consolas:pixelsize=11:bold
+
+
+! --[ Colors ]--
+
+! Theme 1
+*background: rgb:00/00/00
+*foreground: rgb:a8/a8/a8
+*color0:     rgb:00/00/00
+*color1:     rgb:a8/00/00
+*color2:     rgb:00/a8/00
+*color3:     rgb:a8/54/00
+*color4:     rgb:00/00/a8
+*color5:     rgb:a8/00/a8
+*color6:     rgb:00/a8/a8
+*color7:     rgb:a8/a8/a8
+*color8:     rgb:54/50/54
+*color9:     rgb:f8/54/50
+*color10:    rgb:50/fc/50
+*color11:    rgb:f8/fc/50
+*color12:    rgb:50/54/f8
+*color13:    rgb:f8/54/f8
+*color14:    rgb:50/fc/f8
+*color15:    rgb:f8/fc/f8
+
+! Theme 2
+!*background: rgb:00/00/00
+!*foreground: rgb:d3/d3/d3
+!*color0:     rgb:10/10/10
+!*color1:     rgb:cd/5c/5c
+!*color2:     rgb:2e/8b/57
+!*color3:     rgb:f0/e6/8c
+!*color4:     rgb:b0/c4/de
+!*color5:     rgb:ba/55/d3
+!*color6:     rgb:46/82/b4
+!*color7:     rgb:d3/d3/d3
+!*color8:     rgb:4d/4d/4d
+!*color9:     rgb:ff/6a/6a
+!*color10:    rgb:8f/bc/8f
+!*color11:    rgb:ff/fa/cd
+!*color12:    rgb:1e/90/ff
+!*color13:    rgb:db/70/93
+!*color14:    rgb:5f/9e/a0
+!*color15:    rgb:ff/ff/ff 
+
+! Theme 3
+!*background: rgb:00/00/00
+!*foreground: rgb:be/be/be
+!*color0:     rgb:00/00/00
+!*color1:     rgb:d3/62/65
+!*color2:     rgb:ae/ce/91
+!*color3:     rgb:e7/e1/8c
+!*color4:     rgb:7a/7a/b0
+!*color5:     rgb:96/3c/59
+!*color6:     rgb:7f/9f/7f
+!*color7:     rgb:be/be/be
+!*color8:     rgb:66/66/66
+!*color9:     rgb:ef/81/71
+!*color10:    rgb:e5/f7/79
+!*color11:    rgb:f0/df/af
+!*color12:    rgb:8e/9f/bc
+!*color13:    rgb:ef/9e/be
+!*color14:    rgb:71/be/be
+!*color15:    rgb:ff/ff/ff
