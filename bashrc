@@ -1,9 +1,10 @@
-#
+# bashrc - configure non-login bash shells
+# 
+# vim:ts=4:sw=4:sts=4:et:ft=sh:
 
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Colors
@@ -13,10 +14,9 @@ fi
 
 export BROWSER='firefox'
 export PAGER='less'
-
-export EDITOR='vim'
-export VISUAL='vim'
-
+export EDITOR='vim' export VISUAL='vim'
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
 
 shopt -s cdspell
 shopt -s checkwinsize
@@ -25,6 +25,7 @@ shopt -s histappend
 
 set -o vi
 
+alias ls='ls --color=auto'
 alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
@@ -84,4 +85,3 @@ function hfind() {
     history | grep '$@'
 }
 
-# vim:ts=4:sw=4:sts=4:et:ft=sh:
