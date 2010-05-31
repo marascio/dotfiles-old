@@ -12,23 +12,30 @@ if [ -r $HOME/.dir_colors ]; then
     eval $(dircolors -b $HOME/.dir_colors)
 fi
 
-export BROWSER='firefox'
+# Path
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
+export PATH
+
+# Editor and Pager
+export EDITOR='vim' 
+export VISUAL=$EDITOR
 export PAGER='less'
-export EDITOR='vim' export VISUAL='vim'
-export GREP_OPTIONS='--color=auto'
+
+export BROWSER='elinks'
+[ "$DISPLAY" ] && export BROWSER='firefox'
+
 export GREP_COLOR='1;32'
 
-shopt -s cdspell
-shopt -s checkwinsize
-shopt -s dotglob
-shopt -s histappend
-
-set -o vi
+shopt -s cdspell checkwinsize dotglob histappend
+set   -o vi
 
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
+alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
 
 if [ "$TERM" = "linux" ]; then
     echo -en '\e]P0000000' #black
@@ -71,7 +78,7 @@ function env() {
 export HISTCONTROL='ignoredups'
 export HISTSIZE=5000
 export HISTIGNORE="&:ls:pwd:exit:clear"
-export PROMPT_COMMAND='history -a'
+#export PROMPT_COMMAND='history -a && $PROMPT_COMMAND'
 unset  HISTFILESIZE
 alias  hrun='fc -s'                              # Run cmd from history
 

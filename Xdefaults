@@ -1,5 +1,5 @@
 ! ---------------------------------------------------------------------------
-! Xdefaults - configure settings for X Windows and related applications.
+! Xdefaults - configure settings for X Windows and related applications
 !
 ! vim:ts=4:sw=4:sts=4:et:ft=xdefaults:
 ! ---------------------------------------------------------------------------  
@@ -35,7 +35,7 @@ URxvt.boldFont: xft:terminus:pixelsize=12:bold
 Xft.dpi:       96
 Xft.hinting:   true
 Xft.hintstyle: hintslight
-Xft.antialias: false
+Xft.antialias: true
 Xft.rgba:      rgb
 
 ! -----------------------------------------------

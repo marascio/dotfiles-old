@@ -25,9 +25,9 @@ main = do
         } `additionalKeys` myKeys
 
 myKeys = 
-    [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-    , ((controlMask, xK_Print),        spawn "sleep 0.2; scrot -s")
-    , ((0, xK_Print),                  spawn "scrot")
+    [ ((mod4Mask .|. shiftMask, xK_z),      spawn "xscreensaver-command -lock")
+    , ((controlMask,           xK_Print),   spawn "sleep 0.2; scrot -s")
+    , ((0,                     xK_Print),   spawn "scrot")
     ]
     ++
     [ ((m .|. mod4Mask, k), windows $ f i)
@@ -39,9 +39,11 @@ myTerminal = "urxvt"
 
 myManageHook = composeAll
     [ className =? "VirtualBox" --> doFloat
+    , title     =? "wikidiary"  --> doShift "3:wiki"
     ]
 
-myWorkspaces = [ "1:work", "2:mail", "3:web", "4:vm", "9:min" ]
+myWorkspaces = [ "1:shell", "2:code", "3:wiki", "4:mail", "5:comm", 
+                 "6:web",   "7:vm",   "8:win",  "9:min" ]
 
 myFocusFollowsMouse = False
 
