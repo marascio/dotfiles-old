@@ -4,6 +4,8 @@
 " vim:ts=4:sw=4:sts=4:et:ft=vim
 " ---------------------------------------------------------------------------- 
 
+set nocompatible
+
 " Check for 256 colors and set colorscheme appropriatelt
 if (&term =~ "-256color")
     set t_Co=256
@@ -14,8 +16,7 @@ endif
 
 set encoding=utf8
 set backspace=indent,eol,start
-set nocompatible
-set textwidth=72
+set textwidth=78
 set wrap
 set number
 set ruler
@@ -39,33 +40,45 @@ filetype on
 filetype indent on
 filetype plugin on
 
+" ---------------------------------------------------------------------------
+" Keyboard mappings
+" ---------------------------------------------------------------------------
+
+" Format a line or a paragraph
+inoremap          fl         ^gq$
+inoremap          fp         {gq}
+
+" Align text on some centering string
+vnoremap          fc         !align -c:      
+
+" Insert the current RFC 2822 compliant date time string
+inoremap          \now       <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
+noremap           \now           "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>p
+
+noremap  <silent> \slist     <ESC>:SessionList<CR>
+noremap  <silent> \ssave     <ESC>:call lrm:session_save(0)<CR>
+noremap  <silent> \ssaveas   <ESC>:call lrm:session_save(1)<CR>
+nnoremap <silent> <F2>       <ESC>:NERDTreeToggle<CR>
+nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
+
+
+" ---------------------------------------------------------------------------
+" Auto commands
+" ---------------------------------------------------------------------------
+
 autocmd BufRead,BufNewFile *fetchmailrc* set filetype=fetchmail
 autocmd BufRead,BufNewFile *.py          set autoindent
 autocmd BufRead,BufNewFile *.rb          set autoindent
 autocmd BufRead,BufNewFile svn-commit.*  set filetype=svn
+autocmd BufRead,BufNewFile wscript*      set filetype=python
 autocmd SessionLoadPost    *             call lrm:session_autoload()
 
-" Formating and alignment 
-map fl ^gq$
-map fp {gq}
-
-" Align text on some centering string
-vmap fc !align -c:
-
-" Insert the current RFC 2822 compliant date time string
-imap \now <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
-map  \now     "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>p
 
 " Session management
 set sessionoptions=blank,buffers,curdir,folds,help,localoptions,tabpages,winsize
-
-noremap <silent> \slist   <ESC>:SessionList<CR>
-noremap <silent> \ssave   <ESC>:call lrm:session_save(0)<CR>
-noremap <silent> \ssaveas <ESC>:call lrm:session_save(1)<CR>
-
 let sessionman_save_on_exit=0
 
-function lrm:session_save(saveas)
+function! lrm:session_save(saveas)
     call lrm:wikidiary_calendar_close()
 
     if a:saveas == 1
@@ -78,11 +91,11 @@ function lrm:session_save(saveas)
 endfunction
 
 " Use to auto-execute commands for specific sessions that are loaded. 
-function lrm:session_autoload()
+function! lrm:session_autoload()
     call lrm:wikidiary_calendar_open()
 endfunction
 
-function lrm:wikidiary_calendar_open()
+function! lrm:wikidiary_calendar_open()
     if v:this_session !~ 'wikidiary$'
         return
     endif
@@ -92,7 +105,7 @@ function lrm:wikidiary_calendar_open()
     :0          " go to first line of buffer
 endfunction
 
-function lrm:wikidiary_calendar_close()
+function! lrm:wikidiary_calendar_close()
     if v:this_session !~ 'wikidiary$'
         return
     endif
@@ -103,7 +116,6 @@ endfunction
 
 " Calendar Plugin
 let g:calendar_weeknm = 1
-
 
 " Vim Wiki
 let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/public_html/'}]

@@ -30,7 +30,7 @@ export GREP_COLOR='1;32'
 shopt -s cdspell checkwinsize dotglob histappend
 set   -o vi
 
-alias ls='ls --color=auto'
+alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias more='less'
 alias pacman='sudo pacman'
