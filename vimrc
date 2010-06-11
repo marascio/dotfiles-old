@@ -66,13 +66,15 @@ nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
 " Auto commands
 " ---------------------------------------------------------------------------
 
-autocmd BufRead,BufNewFile *fetchmailrc* set filetype=fetchmail
-autocmd BufRead,BufNewFile *.py          set autoindent
-autocmd BufRead,BufNewFile *.rb          set autoindent
-autocmd BufRead,BufNewFile svn-commit.*  set filetype=svn
-autocmd BufRead,BufNewFile wscript*      set filetype=python
-autocmd SessionLoadPost    *             call lrm:session_autoload()
+autocmd BufRead,BufNewFile *fetchmailrc*         set filetype=fetchmail
+autocmd BufRead,BufNewFile *.py                  set autoindent
+autocmd BufRead,BufNewFile *.rb                  set autoindent
+autocmd BufRead,BufNewFile svn-commit.*          set filetype=svn
+autocmd BufRead,BufNewFile wscript*              set filetype=python
+autocmd SessionLoadPost    *                     call lrm:session_autoload()
 
+" Auto-insert file-type specific skeleton templates when creating new files.
+autocmd BufNewFile         *diary/*.wiki         TSkeletonSetup diary.template
 
 " Session management
 set sessionoptions=blank,buffers,curdir,folds,help,localoptions,tabpages,winsize
@@ -124,3 +126,5 @@ let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/public_html/'}]
 highlight OverLength ctermbg=52  ctermfg=166
 match     OverLength '\%>80v.\+'
 
+" tSkeleton
+let g:tskelDateFormat = '%a, %d %b %Y'

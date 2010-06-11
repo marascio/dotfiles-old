@@ -17,6 +17,9 @@ fi
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
 export PATH
 
+[ -d "$HOME/opt/lib" ] && LD_LIBRARY_PATH="$HOME/opt/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+
 # Editor and Pager
 export EDITOR='vim' 
 export VISUAL=$EDITOR
@@ -26,6 +29,8 @@ export BROWSER='elinks'
 [ "$DISPLAY" ] && export BROWSER='firefox'
 
 export GREP_COLOR='1;32'
+
+export GTEST_COLOR='yes'
 
 shopt -s cdspell checkwinsize dotglob histappend
 set   -o vi
@@ -77,7 +82,7 @@ function env() {
 
 export HISTCONTROL='ignoredups'
 export HISTSIZE=5000
-export HISTIGNORE="&:ls:pwd:exit:clear"
+export HISTIGNORE="&:pwd:exit:clear"
 #export PROMPT_COMMAND='history -a && $PROMPT_COMMAND'
 unset  HISTFILESIZE
 alias  hrun='fc -s'                              # Run cmd from history

@@ -8,7 +8,7 @@ import System.IO
 
 
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/lrm/.xmobarrc"
+--    xmproc <- spawnPipe "/usr/bin/xmobar /home/lrm/.xmobarrc"
     xmonad $ defaultConfig
         { terminal   = myTerminal
         , workspaces = myWorkspaces
