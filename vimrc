@@ -45,8 +45,8 @@ filetype plugin on
 " ---------------------------------------------------------------------------
 
 " Format a line or a paragraph
-inoremap          fl         ^gq$
-inoremap          fp         {gq}
+nnoremap          fl         ^gq$
+nnoremap          fp         {gq}
 
 " Align text on some centering string
 vnoremap          fc         !align -c:      
