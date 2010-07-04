@@ -2,7 +2,12 @@
 #
 # vim:ts=4:sw=4:sts=4:et:ft=sh:
 
+xsetroot -cursor_name left_ptr
+
 xset mouse 2 10
+
+# hide mouse cursor when it isn't moving
+unclutter &
 
 # Set up an icon tray
 trayer --edge   top  --align right --SetDockType true --SetPartialStrut true \
