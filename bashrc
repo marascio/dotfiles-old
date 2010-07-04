@@ -47,7 +47,7 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
-alias wine='schroot -pq -- wine'
+alias wine='wine-chroot'
 
 export WINELOADER='wine-chroot'
 
