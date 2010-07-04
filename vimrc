@@ -30,6 +30,8 @@ set formatoptions=tcroqn
 set statusline=%F%m%r%h%w\ (%{&ff}\ %Y\ pos=%l,%v\ %p%%\ of\ %L)
 set laststatus=2
 
+let g:tex_flavor = "latex"
+
 "set comments=fb:-,fb:*
 "set formatlistpat=^\\s*(\\d\\+[.\\t\ ]\|[-*]\ )\\s*
 "set flp=^\\(\\d\\+[.\\t\ ]\\\|[-*]\ \\\|\ \ \\)\\s*    " and  also recognizes two-space blockquoting
