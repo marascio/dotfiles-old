@@ -18,10 +18,12 @@ badd +1 2010-06-03.wiki
 badd +3 2010-06-05.wiki
 badd +3 2010-06-06.wiki
 badd +3 2010-06-07.wiki
-badd +24 2010-06-08.wiki
-badd +8 2010-06-09.wiki
+badd +1 2010-06-08.wiki
+badd +7 2010-06-09.wiki
+badd +1 2010-07-01.wiki
+badd +0 ~/wiki/diary/2010-06-21.wiki
 silent! argdel *
-edit ~/wiki/ItcherTool.wiki
+edit ~/wiki/index.wiki
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -173,15 +175,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 41) / 82)
+let s:l = 1 - ((0 * winheight(0) + 41) / 82)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
+1
 normal! 0
 wincmd w
 argglobal
-edit 2010-06-09.wiki
+edit 2010-07-01.wiki
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <buffer> <S-CR> <br />
@@ -314,15 +316,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 18) / 36)
+let s:l = 3 - ((2 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 0
+3
+normal! 06l
 wincmd w
 argglobal
-edit 2010-06-08.wiki
+edit ~/wiki/diary/2010-06-21.wiki
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <buffer> <S-CR> <br />
