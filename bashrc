@@ -12,6 +12,10 @@ if [ ! -z "$SCHROOT_USER" ]; then
     PS1="[\u@\h \[\033[1;35m\](chroot: $WHICH_CHROOT)\[\033[0m\] \W]\$ "
 fi
 
+# Make sure we sort directory listings sanely
+export LC_ALL=
+export LC_COLLATE="C"
+
 # Colors
 if [ -r $HOME/.dir_colors ]; then
     eval $(dircolors -b $HOME/.dir_colors)
