@@ -41,6 +41,11 @@ Xft.rgba:      rgb
 ! -----------------------------------------------
 ! Screen Saver
 ! -----------------------------------------------
+gnuplot*background: white
+
+! -----------------------------------------------
+! Screen Saver
+! -----------------------------------------------
 
 xscreensaver.lock:        true
 xscreensaver.lockTimeout: 5
@@ -109,4 +114,5 @@ xscreensaver.splash:      false
 !*color13:    rgb:ef/9e/be
 !*color14:    rgb:71/be/be
 !*color15:    rgb:ff/ff/ff
+
 
