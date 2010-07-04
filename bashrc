@@ -5,7 +5,12 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-PS1='[\u@\h \W]\$ '
+PS1="[\u@\h \W]\$ "
+
+if [ ! -z "$SCHROOT_USER" ]; then 
+    WHICH_CHROOT=$(echo $SCHROOT_SESSION_ID | awk -F - '{print $1}')
+    PS1="[\u@\h \[\033[1;35m\](chroot: $WHICH_CHROOT)\[\033[0m\] \W]\$ "
+fi
 
 # Colors
 if [ -r $HOME/.dir_colors ]; then
@@ -35,12 +40,16 @@ export GTEST_COLOR='yes'
 shopt -s cdspell checkwinsize dotglob histappend
 set   -o vi
 
+alias df='df -h'
 alias ls='ls -h --color=auto'
 alias grep='grep --color=auto'
 alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
+alias wine='schroot -pq -- wine'
+
+export WINELOADER='wine-chroot'
 
 if [ "$TERM" = "linux" ]; then
     echo -en '\e]P0000000' #black
