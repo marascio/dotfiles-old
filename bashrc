@@ -5,7 +5,7 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-PS1="[\u@\h \W]\$ "
+PS1="\n[\u@\h \$(__git_ps1 '\[\033[1;35m\](git: %s)\[\033[0m\] ')\w]\$ "
 
 if [ ! -z "$SCHROOT_USER" ]; then 
     WHICH_CHROOT=$(echo $SCHROOT_SESSION_ID | awk -F - '{print $1}')
