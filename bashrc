@@ -5,11 +5,11 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-PS1="\n[\u@\h \$(__git_ps1 '\[\033[1;35m\](git: %s)\[\033[0m\] ')\w]\$ "
+PS1="[\u@\h \$(__git_ps1 '\[\033[1;32m\](%s)\[\033[0m\] ')\w]\$ "
 
 if [ ! -z "$SCHROOT_USER" ]; then 
     WHICH_CHROOT=$(echo $SCHROOT_SESSION_ID | awk -F - '{print $1}')
-    PS1="[\u@\h \[\033[1;35m\](chroot: $WHICH_CHROOT)\[\033[0m\] \W]\$ "
+    PS1="[\u@\h\[\033[1;35m\]<$WHICH_CHROOT>\[\033[0m\] \$(__git_ps1 '\[\033[1;32m\](%s)\[\033[0m\] ')\w]\$ "
 fi
 
 # Make sure we sort directory listings sanely
@@ -51,9 +51,14 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
-alias wine='wine-chroot'
+alias wine='schroot -pq -- wine'
+alias winegcc='schroot -pq -- winegcc'
+alias wineg++='schroot -pq -- wineg++'
+alias winecfg='schroot -pq -- winecfg'
 
-export WINELOADER='wine-chroot'
+export WINELOADER="$HOME/bin/wine-chroot"
+
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 if [ "$TERM" = "linux" ]; then
     echo -en '\e]P0000000' #black
