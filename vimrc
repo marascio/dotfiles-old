@@ -125,8 +125,8 @@ let g:calendar_weeknm = 1
 let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/public_html/'}]
 
 " Highlight lines > 80 characters
-highlight OverLength ctermbg=52  ctermfg=166
-match     OverLength '\%>80v.\+'
+" highlight OverLength ctermbg=52  ctermfg=166
+" match     OverLength '\%>80v.\+'
 
 " tSkeleton
 let g:tskelDateFormat = '%a, %d %b %Y'
