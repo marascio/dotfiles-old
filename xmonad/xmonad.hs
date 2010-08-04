@@ -31,7 +31,9 @@ myWorkspaces = [ "1:wiki", "2:code", "3:web", "4:comm", "5:win", "6:mkt", "7",
 -- Key bindings.
 myKeys = 
     [ ((myModMask .|. shiftMask, xK_z),     spawn "xscreensaver-command -lock")
-    , ((myModMask,               xK_f),     spawn "firefox")
+    , ((myModMask .|. shiftMask, xK_f),     spawn "firefox")
+    , ((myModMask .|. shiftMask, xK_w),     spawn "VBoxManage startvm robocop-winxp-x86")
+    , ((myModMask .|. shiftMask, xK_n),     spawn "nxcore")
     , ((controlMask,             xK_Print), spawn "sleep 0.2; scrot -s")
     , ((0,                       xK_Print), spawn "scrot")
     ]
@@ -43,9 +45,10 @@ myKeys =
 
 -- Window rules. 
 myManageHook = composeAll
-    [ (className =? "VirtualBox" <&&> fmap ("robocop" `isPrefixOf`) title) --> (doShift "8:win" <+> unfloat)
-    , title =? "wikidiary" --> doShift "3:wiki"
-    , className =? "Namoroka" --> doShift "4:web" 
+    [ (className =? "VirtualBox" <&&> fmap ("robocop" `isPrefixOf`) title) --> (doShift "5:win" <+> unfloat)
+    , title     =? "wikidiary"        --> doShift "1:wiki"
+    , className =? "Namoroka"         --> doShift "3:web" 
+    , resource  =? "NxCoreAccess.exe" --> doShift "6:mkt"
     ]
     where
         unfloat = ask >>= doF . W.sink

@@ -1,0 +1,4 @@
+*.swp
+*.pyc
+.waf-*
+.DS_Store

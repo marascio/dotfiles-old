@@ -24,6 +24,7 @@ fi
 # Path
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
+[ -d "$HOME/opt/libsvm" ] && PATH="$HOME/opt/libsvm:$HOME/opt/libsvm/tools:$PATH"
 export PATH
 
 [ -d "$HOME/opt/lib" ] && LD_LIBRARY_PATH="$HOME/opt/lib:$LD_LIBRARY_PATH"
@@ -51,12 +52,10 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
-alias wine='schroot -pq -- wine'
-alias winegcc='schroot -pq -- winegcc'
-alias wineg++='schroot -pq -- wineg++'
-alias winecfg='schroot -pq -- winecfg'
 
-export WINELOADER="$HOME/bin/wine-chroot"
+if [ -z "$SCHROOT_USER" ]; then 
+    export WINELOADER="$HOME/bin/wine-chroot"
+fi;
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 

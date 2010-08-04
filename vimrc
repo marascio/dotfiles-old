@@ -68,6 +68,10 @@ nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
 " Auto commands
 " ---------------------------------------------------------------------------
 
+augroup filetype
+    au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+
 autocmd BufRead,BufNewFile *fetchmailrc*         set filetype=fetchmail
 autocmd BufRead,BufNewFile *.py                  set autoindent
 autocmd BufRead,BufNewFile *.rb                  set autoindent
