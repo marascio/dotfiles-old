@@ -30,12 +30,17 @@ myWorkspaces = [ "1:wiki", "2:code", "3:web", "4:comm", "5:win", "6:mkt", "7",
 
 -- Key bindings.
 myKeys = 
-    [ ((myModMask .|. shiftMask, xK_z),     spawn "xscreensaver-command -lock")
-    , ((myModMask .|. shiftMask, xK_f),     spawn "firefox")
-    , ((myModMask .|. shiftMask, xK_w),     spawn "VBoxManage startvm robocop-winxp-x86")
-    , ((myModMask .|. shiftMask, xK_n),     spawn "nxcore")
-    , ((controlMask,             xK_Print), spawn "sleep 0.2; scrot -s")
-    , ((0,                       xK_Print), spawn "scrot")
+    [ ((myModMask .|. shiftMask, xK_z),      spawn "xscreensaver-command -lock")
+    , ((myModMask .|. shiftMask, xK_f),      spawn "firefox")
+    , ((myModMask .|. shiftMask, xK_d),      spawn "VBoxManage startvm robocop-winxp-x86")
+    , ((myModMask .|. shiftMask, xK_n),      spawn "nxcore")
+    , ((myModMask,               xK_b),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) b")
+    , ((myModMask,               xK_c),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) c")
+    , ((myModMask,               xK_d),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) d")
+    , ((myModMask .|. shiftMask, xK_h),      sendMessage Shrink) -- alternate shrink keybinding
+    , ((myModMask .|. shiftMask, xK_l),      sendMessage Expand) -- alternate expand keybinding
+    , ((controlMask,             xK_Print),  spawn "sleep 0.2; scrot -s")
+    , ((0,                       xK_Print),  spawn "scrot")
     ]
     ++
     [ ((m .|. myModMask, k), windows $ f i)
@@ -70,8 +75,4 @@ main = do
                            }
         , modMask    = myModMask
         } `additionalKeys` myKeys
-
-
-
-
 
