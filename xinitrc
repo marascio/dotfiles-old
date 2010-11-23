@@ -6,6 +6,9 @@ xsetroot -cursor_name left_ptr
 
 xset mouse 2 10
 
+# sane clipboards?
+xsel -o | xsel -b
+
 # hide mouse cursor when it isn't moving
 unclutter &
 

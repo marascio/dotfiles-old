@@ -5,11 +5,12 @@ if [ $(uname -n) != 'cobra' ]; then
     exit
 fi
 
-WINE='schroot -pq -- wine'
+#WINE='schroot -pq -- wine'
 NXCORE_ACCESS=$(find $HOME/.wine -name NxCoreAccess.exe)
 NXCORE_LOG=$HOME/log/nxcore.log
 
 echo -n "Starting NxCoreAccess..."
-$WINE "$NXCORE_ACCESS" &>> $NXCORE_LOG &
+#$WINE "$NXCORE_ACCESS" &>> $NXCORE_LOG &
+"$NXCORE_ACCESS" & >> $NXCORE_LOG&
 echo "started (pid=$!)"
 echo "See $NXCORE_LOG for stdout/err"

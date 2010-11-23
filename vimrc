@@ -27,7 +27,7 @@ set expandtab
 set autoindent
 set formatoptions=tcroqn
 
-set statusline=%F%m%r%h%w\ (%{&ff}\ %Y\ pos=%l,%v\ %p%%\ of\ %L)
+set statusline=%F%m%r%h%w\ (%{&ff}\ %Y\ pos=%l,%v\ %p%%\ of\ %L)\ [%n]
 set laststatus=2
 
 let g:tex_flavor = "latex"
@@ -69,22 +69,30 @@ nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
 " ---------------------------------------------------------------------------
 
 augroup filetype
-    au! BufRead,BufNewFile *.proto setfiletype proto
+    au BufRead,BufNewFile *fetchmailrc*  setfiletype fetchmail
+    au BufRead,BufNewFile *.proto        setfiletype proto
+    au BufRead,BufNewFile svn-commit.*   setfiletype svn
+    au BufRead,BufNewFile wscript*       setfiletype python
 augroup end
 
-autocmd BufRead,BufNewFile *fetchmailrc*         set filetype=fetchmail
-autocmd BufRead,BufNewFile *.py                  set autoindent
-autocmd BufRead,BufNewFile *.rb                  set autoindent
-autocmd BufRead,BufNewFile svn-commit.*          set filetype=svn
-autocmd BufRead,BufNewFile wscript*              set filetype=python
-autocmd SessionLoadPost    *                     call lrm:session_autoload()
+au BufRead,BufNewFile *.py               set autoindent
+au BufRead,BufNewFile *.rb               set autoindent
+au SessionLoadPost    *                  call lrm:session_autoload()
+au BufReadPost        *                  call lrm:set_cursor_last_edit()
 
 " Auto-insert file-type specific skeleton templates when creating new files.
-autocmd BufNewFile         *diary/*.wiki         TSkeletonSetup diary.template
+autocmd BufNewFile    *diary/*.wiki      TSkeletonSetup diary.template
 
 " Session management
 set sessionoptions=blank,buffers,curdir,folds,help,localoptions,tabpages,winsize
 let sessionman_save_on_exit=0
+
+" go to the last location in the file if one exists
+function! lrm:set_cursor_last_edit()
+    if line("'\"") > 0 && line("'\"") <= line("$") 
+        exe "normal g'\""
+    endif
+endfunction
 
 function! lrm:session_save(saveas)
     call lrm:wikidiary_calendar_close()

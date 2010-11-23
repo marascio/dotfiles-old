@@ -73,7 +73,7 @@ hi Number       ctermfg=179 guifg=#dfaf87
 hi PreProc      ctermfg=155 guifg=#afdf87
 hi Special      ctermfg=174 guifg=#df8787
 hi Statement    ctermfg=110 guifg=#87afdf                           cterm=none gui=none
-hi Todo         ctermfg=0   guifg=#000000 ctermbg=184 guibg=#dfdf00
+hi Todo         ctermfg=0   guifg=#000000 ctermbg=166 guibg=#df5f00
 hi Type         ctermfg=146 guifg=#afafdf                           cterm=none gui=none
 hi Underlined   ctermfg=39  guifg=#00afff                           cterm=underline gui=underline
 
