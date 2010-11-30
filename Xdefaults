@@ -21,8 +21,20 @@ URxvt.depth:           24
 !URxvt.boldFont: xft:DejaVuSansMono:pixelsize=12:bold
 
 ! Terminus
-URxvt.font:     xft:terminus:pixelsize=12
-URxvt.boldFont: xft:terminus:pixelsize=12
+URxvt.font:     xft:terminus:pixelsize=14
+URxvt.boldFont: xft:terminus:pixelsize=14
+
+! Monaco
+!URxvt.font: xft:Monaco:pixelsize=11:antialias=true:hinting=true
+!URxvt.boldFont: xft:Monaco:pixelsize=11:antialias=true:bold:hinting=true
+!URxvt.italicFont: xft:Monaco:pixelsize=11:antialias=true:italic:autohint=true:hinting=true
+!URxvt.bolditalicFont: xft:Monaco:pixelsize=11:antialias=true:bold:italic:autohint=true:hinting=true
+
+! Profont
+!URxvt*font:           -*-ProFont-medium-r-*-*-12-120-*-*-*-*-*-*
+!URxvt*boldFont:       -*-ProFont-medium-r-*-*-12-120-*-*-*-*-*-*
+!URxvt*italicFont:     -*-ProFont-medium-r-*-*-12-120-*-*-*-*-*-*
+!URxvt*bolditalicFont: -*-ProFont-medium-r-*-*-12-120-*-*-*-*-*-*
 
 ! Inconsolata
 !URxvt.font:     xft:inconsolata:pixelsize=13
