@@ -16,17 +16,21 @@ URxvt.matcher.button:  1
 URxvt.scrollBar:       false
 URxvt.depth:           24
 
+! DejaVu Sans Mono
+!URxvt.font:     xft:DejaVuSansMono:pixelsize=12
+!URxvt.boldFont: xft:DejaVuSansMono:pixelsize=12:bold
+
 ! Terminus
 URxvt.font:     xft:terminus:pixelsize=12
-URxvt.boldFont: xft:terminus:pixelsize=12:bold
+URxvt.boldFont: xft:terminus:pixelsize=12
 
 ! Inconsolata
-!URxvt.font:     xft:inconsolata:pixelsize=12
-!URxvt.boldFont: xft:inconsolata:pixelsize=12:bold
+!URxvt.font:     xft:inconsolata:pixelsize=13
+!URxvt.boldFont: xft:inconsolata:pixelsize=13:bold
 
 ! Consolas
-!URxvt.font:     xft:consolas:pixelsize=11
-!URxvt.boldFont: xft:consolas:pixelsize=11:bold
+!URxvt.font:     xft:consolas:pixelsize=13
+!URxvt.boldFont: xft:consolas:pixelsize=13:bold
 
 ! -----------------------------------------------
 ! Fonts
