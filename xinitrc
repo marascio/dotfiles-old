@@ -20,5 +20,7 @@ trayer --edge   top  --align right --SetDockType true --SetPartialStrut true \
 # Start screen saver
 xscreensaver &
 
+dropbox start
+
 # XMonad tiling window manager
 exec xmonad
