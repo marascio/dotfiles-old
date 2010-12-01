@@ -12,10 +12,14 @@ xsel -o | xsel -b
 # hide mouse cursor when it isn't moving
 unclutter &
 
+autocutsel -selection PRIMARY   -fork
+autocutsel -selection CLIPBOARD -fork
+
 # Set up an icon tray
-trayer --edge   top  --align right --SetDockType true --SetPartialStrut true \
-       --expand true --width 10    --transparent true --tint 0x191970        \
-       --height 12 &
+trayer --edge  top --align     left  --margin 1499 --expand     true \
+       --width 100 --widthtype pixel --height 12   --heighttype pixel \
+       --SetDockType true --SetPartialStrut true \
+       --transparent true --tint 0x000000 &
 
 # Start screen saver
 xscreensaver &
