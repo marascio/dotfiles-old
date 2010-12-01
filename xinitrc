@@ -16,7 +16,7 @@ autocutsel -selection PRIMARY   -fork
 autocutsel -selection CLIPBOARD -fork
 
 # Set up an icon tray
-trayer --edge  top --align     left  --margin 1499 --expand     true \
+trayer --edge  top --align     left  --margin 1125 --expand     true \
        --width 100 --widthtype pixel --height 12   --heighttype pixel \
        --SetDockType true --SetPartialStrut true \
        --transparent true --tint 0x000000 &
