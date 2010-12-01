@@ -134,7 +134,7 @@ endfunction
 let g:calendar_weeknm = 1
 
 " Vim Wiki
-let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/public_html/'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/wiki', 'path_html': '~/public_html/'}]
 
 " Highlight lines > 80 characters
 " highlight OverLength ctermbg=52  ctermfg=166
