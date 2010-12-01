@@ -17,12 +17,12 @@ URxvt.scrollBar:       false
 URxvt.depth:           24
 
 ! DejaVu Sans Mono
-!URxvt.font:     xft:DejaVuSansMono:pixelsize=12
-!URxvt.boldFont: xft:DejaVuSansMono:pixelsize=12:bold
+!URxvt.font:     xft:DejaVuSansMono:pixelsize=13
+!URxvt.boldFont: xft:DejaVuSansMono:pixelsize=13:bold
 
 ! Terminus
-URxvt.font:     xft:terminus:pixelsize=14
-URxvt.boldFont: xft:terminus:pixelsize=14
+!URxvt.font:     xft:terminus:pixelsize=14
+!URxvt.boldFont: xft:terminus:pixelsize=14
 
 ! Monaco
 !URxvt.font: xft:Monaco:pixelsize=11:antialias=true:hinting=true
@@ -37,8 +37,8 @@ URxvt.boldFont: xft:terminus:pixelsize=14
 !URxvt*bolditalicFont: -*-ProFont-medium-r-*-*-12-120-*-*-*-*-*-*
 
 ! Inconsolata
-!URxvt.font:     xft:inconsolata:pixelsize=13
-!URxvt.boldFont: xft:inconsolata:pixelsize=13:bold
+URxvt.font:     xft:inconsolata:pixelsize=14
+URxvt.boldFont: xft:inconsolata:pixelsize=14:bold
 
 ! Consolas
 !URxvt.font:     xft:consolas:pixelsize=13
@@ -48,11 +48,11 @@ URxvt.boldFont: xft:terminus:pixelsize=14
 ! Fonts
 ! -----------------------------------------------
 
-Xft.dpi:       96
-Xft.hinting:   true
-Xft.hintstyle: hintslight
-Xft.antialias: true
-Xft.rgba:      rgb
+!Xft.dpi:       96
+!Xft.hinting:   true
+!Xft.hintstyle: hintslight
+!Xft.antialias: true
+!Xft.rgba:      rgb
 
 ! -----------------------------------------------
 ! Screen Saver
