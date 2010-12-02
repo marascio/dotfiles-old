@@ -19,8 +19,8 @@ myFocusFollowsMouse = False
 
 -- The width and color of the border.
 myBorderWidth        = 1
-myNormalBorderColor  = "#0f0f0f"
-myFocusedBorderColor = "#000044"
+myNormalBorderColor  = "gray"
+myFocusedBorderColor = "red"
 
 -- The modified key we prefer.
 myModMask = mod4Mask
@@ -80,8 +80,9 @@ main = do
         { terminal   = myTerminal
         , workspaces = myWorkspaces
         , focusFollowsMouse = myFocusFollowsMouse
-        -- , normalBorderColor = myNormalBorderColor
-        -- , focusedBorderColor = myFocusedBorderColor
+        , borderWidth = myBorderWidth
+        , normalBorderColor = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
         , manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook    = dynamicLogWithPP $ xmobarPP
