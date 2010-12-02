@@ -6,9 +6,9 @@ Config { font = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*"
                     , Run Memory ["-t", "Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
-                    -- , Run Com "/home/lrm/bin/getvol.sh" [] "vol" 5
+                    , Run Com "/home/lrm/bin/getvol.sh" [] "vol" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %swap%   <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %swap% | %vol%  <fc=#ee9a00>%date%</fc>"

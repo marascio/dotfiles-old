@@ -39,8 +39,8 @@ myKeys =
     , ((controlMask .|. shiftMask, xK_d),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) d")
     , ((myModMask   .|. shiftMask, xK_h),      sendMessage Shrink) -- alternate shrink keybinding
     , ((myModMask   .|. shiftMask, xK_l),      sendMessage Expand) -- alternate expand keybinding
-    , ((myModMask   .|. shiftMask, xK_equal),  spawn "amixer set Master 5%+")
-    , ((myModMask   .|. shiftMask, xK_minus),  spawn "amixer set Master 5%-")
+    , ((myModMask   .|. shiftMask, xK_equal),  spawn "amixer set Master 10%+ unmute")
+    , ((myModMask   .|. shiftMask, xK_minus),  spawn "amixer set Master 10%- unmute")
     , ((myModMask   .|. shiftMask, xK_0),      spawn "amixer set Master toggle")
     , ((controlMask,               xK_Print),  spawn "sleep 0.2; scrot -s")
     , ((0,                         xK_Print),  spawn "scrot")
