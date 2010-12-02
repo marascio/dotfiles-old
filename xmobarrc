@@ -6,7 +6,7 @@ Config { font = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*"
                     , Run Memory ["-t", "Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
-                    , Run Com "/home/lrm/bin/getvol.sh" [] "vol" 10
+                    , Run Com "getvol.sh" [] "vol" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
