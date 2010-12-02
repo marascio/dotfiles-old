@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Actions.CycleWS
 import Data.List
 import System.IO
 
@@ -42,6 +43,17 @@ myKeys =
     , ((myModMask   .|. shiftMask, xK_equal),  spawn "amixer set Master 10%+ unmute")
     , ((myModMask   .|. shiftMask, xK_minus),  spawn "amixer set Master 10%- unmute")
     , ((myModMask   .|. shiftMask, xK_0),      spawn "amixer set Master toggle")
+    , ((myModMask,                 xK_Down),   nextWS)
+    , ((myModMask,                 xK_Up),     prevWS)
+    , ((myModMask   .|. shiftMask, xK_Down),   shiftToNext)
+    , ((myModMask   .|. shiftMask, xK_Up),     shiftToPrev)
+    , ((myModMask,                 xK_Right),  nextScreen)
+    , ((myModMask,                 xK_Left),   prevScreen)
+    , ((myModMask   .|. shiftMask, xK_Right),  shiftNextScreen)
+    , ((myModMask   .|. shiftMask, xK_Left),   shiftPrevScreen)
+    , ((myModMask,                 xK_z),      toggleWS)
+    , ((myModMask   .|. shiftMask, xK_Down),   shiftToNext >> nextWS)
+    , ((myModMask   .|. shiftMask, xK_Up),     shiftToPrev >> prevWS)
     , ((controlMask,               xK_Print),  spawn "sleep 0.2; scrot -s")
     , ((0,                         xK_Print),  spawn "scrot")
     ]
