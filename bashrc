@@ -55,6 +55,7 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
+alias make='make -e'
 
 #if [ -z "$SCHROOT_USER" ]; then 
 #    export WINELOADER="$HOME/bin/wine-chroot"
