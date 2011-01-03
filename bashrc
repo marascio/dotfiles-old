@@ -12,6 +12,9 @@ if [ ! -z "$SCHROOT_USER" ]; then
     PS1="[\u@\h\[\033[1;35m\]<$WHICH_CHROOT>\[\033[0m\] \$(__git_ps1 '\[\033[1;32m\](%s)\[\033[0m\] ')\w]\$ "
 fi
 
+# Setup Tariten environment
+#[ -f "$HOME/.ttsetup/ttenv.sh" ] && source $HOME/.ttsetup/ttenv.sh
+
 # Make sure we sort directory listings sanely
 export LC_ALL=
 export LC_COLLATE="C"
