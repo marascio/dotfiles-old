@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.CycleWS
@@ -69,6 +70,8 @@ myManageHook = composeAll
     , title      =? "wikidiary"        --> doShift "1:wiki"
     , className  =? "Namoroka"         --> doShift "3:web" 
     , resource   =? "NxCoreAccess.exe" --> doShift "6:mkt"
+    , isFullscreen                     --> doFullFloat
+    , isDialog                         --> doCenterFloat
     ]
     where
         unfloat = ask >>= doF . W.sink
