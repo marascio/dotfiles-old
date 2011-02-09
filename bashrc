@@ -12,9 +12,6 @@ if [ ! -z "$SCHROOT_USER" ]; then
     PS1="[\u@\h\[\033[1;35m\]<$WHICH_CHROOT>\[\033[0m\] \$(__git_ps1 '\[\033[1;32m\](%s)\[\033[0m\] ')\w]\$ "
 fi
 
-# Setup Tariten environment
-#[ -f "$HOME/.ttsetup/ttenv.sh" ] && source $HOME/.ttsetup/ttenv.sh
-
 # Make sure we sort directory listings sanely
 export LC_ALL=
 export LC_COLLATE="C"
@@ -23,6 +20,9 @@ export LC_COLLATE="C"
 if [ -r $HOME/.dir_colors ]; then
     eval $(dircolors -b $HOME/.dir_colors)
 fi
+
+# Setup Tariten environment
+[ -f "$HOME/.tt/ttsetup/ttenv.sh" ] && source $HOME/.tt/ttsetup/ttenv.sh
 
 # Path
 [ -d "$HOME/opt/libsvm" ] && PATH="$HOME/opt/libsvm:$HOME/opt/libsvm/tools:$PATH"
@@ -35,6 +35,7 @@ export PATH
 [ -d "$HOME/opt/tt/linux/boost/lib" ] && LD_LIBRARY_PATH="$HOME/opt/tt/linux/boost/lib:$LD_LIRARY_PATH"
 [ -d "$HOME/opt/tt/linux/poco/lib" ] && LD_LIBRARY_PATH="$HOME/opt/tt/linux/poco/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH
+
 
 # Editor and Pager
 export EDITOR='vim' 
@@ -58,7 +59,9 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
-alias make='make -e'
+alias lspeed-up='sudo vpnc --local-port=0 lightspeed'
+alias lspeed-down='sudo vpnc-disconnect'
+alias fixnxcore='sed -ibak -e "s/d8,a7,ce,82/42,70,98,4d/" system.reg'
 
 #if [ -z "$SCHROOT_USER" ]; then 
 #    export WINELOADER="$HOME/bin/wine-chroot"
@@ -112,12 +115,29 @@ unset  HISTFILESIZE
 alias  hrun='fc -s'                              # Run cmd from history
 
 # Search history for a command matching substring
-function hfind() {
+hfind() {
     if [ -z "$1" ]; then
         echo 'Usage: hfind STRING'
-        return
+        return 1
     fi
 
     history | grep '$@'
 }
 
+switchtaritenaws() {
+    local acct=$1
+    if [ -z "$acct" ]; then
+        echo "usage: switchtaritenaws ACCOUNT"
+        return 1
+    fi
+
+    local ak=$(awk "/$acct :.*$/,/};/" $HOME/.tt/prod.cfg | grep access_key | awk -F"=" '{print $2}')
+    local sk=$(awk "/$acct :.*$/,/};/" $HOME/.tt/prod.cfg | grep secret_key | awk -F"=" '{print $2}')
+    export EC2_CERT=$HOME/.tt/prod/$acct.cert.pem
+    export EC2_PRIVATE_KEY=$HOME/.tt/prod/$acct.cert-pk.pem
+    ak=$(echo "$ak" | tr -d '"; ')
+    sk=$(echo "$sk" | tr -d '"; ')
+    echo "AWSAccessKeyId=$ak" > ~/.awscredentials
+    echo "AWSSecretKey=$sk" >> ~/.awscredentials
+    export AWS_CREDENTIAL_FILE=$HOME/.awscredentials
+}
