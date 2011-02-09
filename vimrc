@@ -32,6 +32,8 @@ set laststatus=2
 
 let g:tex_flavor = "latex"
 
+let g:is_bash = 1
+
 "set comments=fb:-,fb:*
 "set formatlistpat=^\\s*(\\d\\+[.\\t\ ]\|[-*]\ )\\s*
 "set flp=^\\(\\d\\+[.\\t\ ]\\\|[-*]\ \\\|\ \ \\)\\s*    " and  also recognizes two-space blockquoting
@@ -75,7 +77,7 @@ augroup filetype
     au BufRead,BufNewFile wscript*       setfiletype python
 augroup end
 
-au BufRead,BufNewFile *.py               set autoindent
+au BufRead,BufNewFile *.py               set autoindent ts=4 sw=4 sts=4 expandtab
 au BufRead,BufNewFile *.rb               set autoindent
 au SessionLoadPost    *                  call lrm:session_autoload()
 au BufReadPost        *                  call lrm:set_cursor_last_edit()
