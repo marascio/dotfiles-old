@@ -1,0 +1,7 @@
+"2.3.1 (created: 2010/04/07 18:25:13)
+
+set defsearch=search-google
+set runtimepath=/home/lrm/.vimperator
+source! /home/lrm/.vimperatorrc.local
+
+" vim: set ft=vimperator:
