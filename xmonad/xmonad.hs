@@ -27,8 +27,8 @@ myFocusedBorderColor = "red"
 myModMask = mod4Mask
 
 -- The workspaces and their names.
-myWorkspaces = [ "1:wiki", "2:code", "3:web", "4:comm", "5:win", "6:mkt", "7", 
-                 "8",  "9" ]
+myWorkspaces = [ "1:shell", "2:code", "3:shell", "4:web", "5:vm", "6:mkt",
+                 "7:chat", "8",  "9" ]
 
 -- Key bindings.
 myKeys = 
@@ -67,8 +67,8 @@ myKeys =
 -- Window rules. 
 myManageHook = composeAll
     [ (className =? "VirtualBox" <&&> fmap ("robocop" `isPrefixOf`) title) --> (doShift "5:win" <+> unfloat)
-    , title      =? "wikidiary"        --> doShift "1:wiki"
-    , className  =? "Namoroka"         --> doShift "3:web" 
+    , title      =? "wikidiary"        --> doShift "1:shell"
+    , className  =? "Namoroka"         --> doShift "4:web"
     , resource   =? "NxCoreAccess.exe" --> doShift "6:mkt"
     , isFullscreen                     --> doFullFloat
     , isDialog                         --> doCenterFloat

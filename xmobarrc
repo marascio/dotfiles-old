@@ -8,8 +8,9 @@ Config { font = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*"
                     , Run Date "%a %b %_d %l:%M" "date" 10
                     , Run Com "getvol.sh" [] "vol" 10
                     , Run Com "lspeedstat.sh" [] "lspeed" 10
+                    , Run Com "isbuilding.sh" [] "isbuild" 1 
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %swap% | %vol%  %lspeed%<fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %swap% | %vol% %isbuild%%lspeed%<fc=#ee9a00>%date%</fc>"
