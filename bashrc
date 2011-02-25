@@ -25,17 +25,12 @@ fi
 [ -f "$HOME/.tt/ttsetup/ttenv.sh" ] && source $HOME/.tt/ttsetup/ttenv.sh
 
 # Path
-[ -d "$HOME/opt/libsvm" ] && PATH="$HOME/opt/libsvm:$HOME/opt/libsvm/tools:$PATH"
-[ -d "$HOME/opt/mingw" ] && PATH="$HOME/opt/mingw/usr/bin:$PATH"
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 export PATH
 
 [ -d "$HOME/opt/lib" ] && LD_LIBRARY_PATH="$HOME/opt/lib:$LD_LIBRARY_PATH"
-[ -d "$HOME/opt/tt/linux/boost/lib" ] && LD_LIBRARY_PATH="$HOME/opt/tt/linux/boost/lib:$LD_LIRARY_PATH"
-[ -d "$HOME/opt/tt/linux/poco/lib" ] && LD_LIBRARY_PATH="$HOME/opt/tt/linux/poco/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH
-
 
 # Editor and Pager
 export EDITOR='vim' 
@@ -141,3 +136,5 @@ switchtaritenaws() {
     echo "AWSSecretKey=$sk" >> ~/.awscredentials
     export AWS_CREDENTIAL_FILE=$HOME/.awscredentials
 }
+
+eval `keychain -q --eval --agents ssh id_rsa`
