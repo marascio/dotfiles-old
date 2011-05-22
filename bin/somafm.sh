@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ "$(type -P links)" ] || echo "error: 'links' must be installed" && exit 1
+test $(type -P links) || { echo "error: 'links' must be installed"; exit 1; }
 
 if [ $# -lt 1 ]; then
     echo "error: please specify a stream"
