@@ -8,29 +8,52 @@ filetype off
 let mapleader = ","
 let maplocalleader = "\\"
 
+" Auto-initialize vundle if we don't already have it:
+" http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+let need_vundle_init=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..\n"
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let need_vundle_init=0
+endif
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" vundle manages vundle, required
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
+
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'acustodioo/vim-tmux'
+Bundle 'chrismetcalf/vim-yankring'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-Bundle 'tsaleh/vim-align'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
+Bundle 'mirell/vim-matchit'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/threesome.vim'
-Bundle 'chrismetcalf/vim-yankring'
-Bundle 'mirell/vim-matchit'
-Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tsaleh/vim-align'
+
 Bundle 'Twinside/vim-syntax-haskell-cabal'
 Bundle 'lukerandall/haskellmode-vim'
+
+" colors
 Bundle 'sjl/badwolf'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
+
+if need_vundle_init == 0
+    echo "Installing Bundles, please ignore key map error messages\n"
+    :BundleInstall
+endif
 
 filetype plugin indent on
 syntax on 
