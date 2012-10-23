@@ -27,6 +27,16 @@ set expandtab
 set autoindent
 set formatoptions=tcroqn
 
+function! MyGitBranchStyle()
+    let branch = GitBranch()
+    if branch == ''
+        let branchStyle = ''
+    else
+        let branchStyle = 'git:' . branch
+    end
+    return branchStyle
+endfunction
+
 set statusline=%F%m%r%h%w\ (%{&ff}\ %Y\ pos=%l,%v\ %p%%\ of\ %L)\ [%n]
 set laststatus=2
 
@@ -64,6 +74,10 @@ noremap  <silent> \ssave     <ESC>:call lrm:session_save(0)<CR>
 noremap  <silent> \ssaveas   <ESC>:call lrm:session_save(1)<CR>
 nnoremap <silent> <F2>       <ESC>:NERDTreeToggle<CR>
 nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
+
+nmap              _Y         :.w! ~/.vitmp<CR>
+vmap              _Y         :w!  ~/.vitmp<CR>
+nmap              _P         :r   ~/.vitmp<CR>
 
 
 " ---------------------------------------------------------------------------

@@ -16,8 +16,8 @@ autocutsel -selection PRIMARY   -fork
 autocutsel -selection CLIPBOARD -fork
 
 # Set up an icon tray
-trayer --edge  top --align     left  --margin 1100 --expand     true \
-       --width 100 --widthtype pixel --height 12   --heighttype pixel \
+trayer --edge  top --align     left  --margin 975 --expand     true \
+       --width 100 --widthtype pixel --height 12  --heighttype pixel \
        --SetDockType true --SetPartialStrut true \
        --transparent true --tint 0x000000 &
 
@@ -25,6 +25,10 @@ trayer --edge  top --align     left  --margin 1100 --expand     true \
 xscreensaver &
 
 dropbox start
+
+keepassx -min -lock &
+
+xhost local:boinc
 
 # XMonad tiling window manager
 exec xmonad

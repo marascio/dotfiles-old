@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.CycleWS
@@ -35,10 +36,11 @@ myKeys =
     [ ((myModMask   .|. shiftMask, xK_z),      spawn "xscreensaver-command -lock")
     , ((myModMask   .|. shiftMask, xK_f),      spawn "firefox")
     , ((myModMask   .|. shiftMask, xK_d),      spawn "VBoxManage startvm robocop-winxp-x86")
-    , ((myModMask   .|. shiftMask, xK_n),      spawn "nxcore")
+    , ((myModMask   .|. shiftMask, xK_m),      spawn "somafm.sh groovesalad")
     , ((controlMask .|. shiftMask, xK_b),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) b")
     , ((controlMask .|. shiftMask, xK_c),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) c")
     , ((controlMask .|. shiftMask, xK_d),      spawn "xdotool key --window $(cat /tmp/ttmake.wid) d")
+    , ((controlMask .|. shiftMask, xK_k),      spawn "wid=$(xdotool getwindowfocus); xdotool windowactivate --sync 0x3a0000c key ctrl+shift+s windowactivate $wid")
     , ((myModMask   .|. shiftMask, xK_h),      sendMessage Shrink) -- alternate shrink keybinding
     , ((myModMask   .|. shiftMask, xK_l),      sendMessage Expand) -- alternate expand keybinding
     , ((myModMask   .|. shiftMask, xK_equal),  spawn "amixer set Master 10%+ unmute")
@@ -66,10 +68,14 @@ myKeys =
 
 -- Window rules. 
 myManageHook = composeAll
-    [ (className =? "VirtualBox" <&&> fmap ("robocop" `isPrefixOf`) title) --> (doShift "5:win" <+> unfloat)
+    [ (className =? "VirtualBox" <&&> fmap ("robocop"  `isPrefixOf`) title) --> (doShift "5:win" <+> unfloat)
+    --, (className =? "Firefox"    <&&> fmap ("Campfire" `isPrefixOf`) title) --> doShift "7:chat"
+    , title      =? "Campfire"         --> doShift "7:chat"
     , title      =? "wikidiary"        --> doShift "1:shell"
-    , className  =? "Namoroka"         --> doShift "4:web"
+    , className  =? "Firefox"          --> doShift "4:web"
     , resource   =? "NxCoreAccess.exe" --> doShift "6:mkt"
+    , title      =? "xclock"           --> (doShift "6:mkt" <+> doFloat)
+    , className  =? "Skype"            --> doFloat
     , isFullscreen                     --> doFullFloat
     , isDialog                         --> doCenterFloat
     ]
@@ -79,7 +85,7 @@ myManageHook = composeAll
 -- Run xmonad.
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/lrm/.xmobarrc"
-    xmonad $ defaultConfig
+    xmonad $ ewmh defaultConfig
         { terminal   = myTerminal
         , workspaces = myWorkspaces
         , focusFollowsMouse = myFocusFollowsMouse

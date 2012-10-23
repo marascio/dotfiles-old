@@ -20,10 +20,7 @@ fi
 stream=$1
 streamurl="http://somafm.com/startstream=$stream.pls"
 playedurl="http://somafm.com/play/$stream"
-nohup mplayer -really-quiet -vo none -ao alsa $streamurl &>/dev/null &
+mplayer -really-quiet -vo none -ao alsa $streamurl &>/dev/null &
 pid=$!
-
-trap 'kill $pid;' TERM QUIT INT
-
+trap 'kill -9 $pid;' TERM QUIT INT
 watch -n5 -t "links -dump $playedurl | sed -n '/Music Director.*/,/SomaFM/p'"
-kill $pid

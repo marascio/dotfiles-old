@@ -2,15 +2,17 @@ Config { font = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
-       , commands = [ Run Cpu ["-L", "3", "-h", "50", "--normal", "green", "--high", "red"] 10
+       , commands = [ Run Weather "KIAH" ["-t", "<skyCondition> <tempF> F "] 300
+                    , Run Cpu ["-L", "3", "-h", "50", "--normal", "green", "--high", "red"] 10
                     , Run Memory ["-t", "Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
+                    , Run Swap ["-t", "<usedratio>%"] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
                     , Run Com "getvol.sh" [] "vol" 10
-                    , Run Com "lspeedstat.sh" [] "lspeed" 10
+                    , Run Com "hannibalstat.sh" [] "hannibal" 60
+                    , Run Com "madmaxstat.sh" [] "madmax" 60
                     , Run Com "isbuilding.sh" [] "isbuild" 1 
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %swap% | %vol% %isbuild%%lspeed%<fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu% | %memory% / %swap% | %vol% %isbuild%<fc=green>%hannibal%%madmax%</fc> <fc=#aabbcc>%KIAH%</fc><fc=#ee9a00>%date%</fc>"

@@ -2,6 +2,11 @@
 # 
 # vim:ts=4:sw=4:sts=4:et:ft=sh:
 
+export LANG="en_US.UTF-8"
+
+[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+source ~/.git-prompt.sh
+
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
@@ -27,10 +32,13 @@ fi
 # Path
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/tt/bin" ] && PATH="$HOME/tt/bin:$PATH"
 export PATH
 
 [ -d "$HOME/opt/lib" ] && LD_LIBRARY_PATH="$HOME/opt/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH
+
+export R_LIBS_USER="$HOME/opt/R/library"
 
 # Editor and Pager
 export EDITOR='vim' 
@@ -54,9 +62,10 @@ alias more='less'
 alias pacman='sudo pacman'
 alias vi='vim'
 alias wikidiary='vim -S $HOME/.vim/sessions/wikidiary'
-alias lspeed-up='sudo vpnc --local-port=0 lightspeed'
+alias lspeed-up='sudo vpnc --local-port=0 lightspeed-gr'
 alias lspeed-down='sudo vpnc-disconnect'
-alias fixnxcore='sed -ibak -e "s/d8,a7,ce,82/42,70,98,4d/" system.reg'
+alias mktclock='xclock -digital -update 1 -face "terminus-30:bold" -geometry 510x50+1085+4'
+alias monitorlsgw='sudo ngrep -d lo -tq -W byline -v "(^H|^R)" port 31091'
 
 #if [ -z "$SCHROOT_USER" ]; then 
 #    export WINELOADER="$HOME/bin/wine-chroot"
@@ -135,6 +144,8 @@ switchtaritenaws() {
     echo "AWSAccessKeyId=$ak" > ~/.awscredentials
     echo "AWSSecretKey=$sk" >> ~/.awscredentials
     export AWS_CREDENTIAL_FILE=$HOME/.awscredentials
+    export AWS_ACCESS_KEY_ID=$ak
+    export AWS_SECRET_ACCESS_KEY=$sk
 }
 
 eval `keychain -q --eval --agents ssh id_rsa`
