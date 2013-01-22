@@ -12,6 +12,7 @@ URxvt.title:           urxvt
 URxvt.termName:        rxvt-256color
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher:     firefox
+URxvt.url-launcher:    firefox
 URxvt.matcher.button:  1
 URxvt.scrollBar:       false
 URxvt.depth:           24
