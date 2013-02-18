@@ -31,6 +31,7 @@ fi
 
 # Path
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
+[ -d "$HOME/.gem/ruby/1.9.1/bin" ] && PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/tt/bin" ] && PATH="$HOME/tt/bin:$PATH"
 export PATH
@@ -66,6 +67,10 @@ alias lspeed-up='sudo vpnc --local-port=0 lightspeed-gr'
 alias lspeed-down='sudo vpnc-disconnect'
 alias mktclock='xclock -digital -update 1 -face "terminus-30:bold" -geometry 510x50+1085+4'
 alias monitorlsgw='sudo ngrep -d lo -tq -W byline -v "(^H|^R)" port 31091'
+
+if [ "$(hostname)" = "cobra" ]; then
+    alias startx='LD_PRELOAD=/home/lrm/opt/fakexinerama/libXinerama.so startx'
+fi
 
 #if [ -z "$SCHROOT_USER" ]; then 
 #    export WINELOADER="$HOME/bin/wine-chroot"
