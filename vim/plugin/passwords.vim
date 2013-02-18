@@ -1,1 +1,0 @@
-/home/lrm/.passwords.vim
