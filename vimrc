@@ -27,6 +27,8 @@ set expandtab
 set autoindent
 set formatoptions=tcroqn
 
+let c_no_curly_error=1
+
 function! MyGitBranchStyle()
     let branch = GitBranch()
     if branch == ''
