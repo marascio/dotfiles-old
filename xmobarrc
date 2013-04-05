@@ -7,7 +7,7 @@ Config { font = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*"
                     , Run Memory ["-t", "Mem: <usedratio>%"] 10
                     , Run Swap ["-t", "<usedratio>%"] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
-                    , Run Com "getvol.sh" [] "vol" 10
+                    , Run Com "getvol.sh" [] "vol" 1
                     , Run Com "hannibalstat.sh" [] "hannibal" 60
                     , Run Com "madmaxstat.sh" [] "madmax" 60
                     , Run Com "isbuilding.sh" [] "isbuild" 1 

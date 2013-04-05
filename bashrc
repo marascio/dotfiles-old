@@ -31,7 +31,8 @@ fi
 
 # Path
 [ -d "$HOME/code/dotfiles/bin" ] && PATH="$HOME/code/dotfiles/bin:$PATH"
-[ -d "$HOME/.gem/ruby/1.9.1/bin" ] && PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
+#[ -d "$HOME/.gem/ruby/1.9.1/bin" ] && PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
+[ -d "$HOME/.gem/ruby/2.0.0/bin" ] && PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/tt/bin" ] && PATH="$HOME/tt/bin:$PATH"
 export PATH
