@@ -10,7 +10,7 @@ if [ $# -lt 1 ]; then
     bootliquor     suburbsofgoa    sonicuniverse   tags
     poptron        u80s            cliqhop         illstreet
     digitalis      missioncontrol  xmasinfrisko    doomed
-    covers         brfm
+    covers         brfm            deepspaceone    sf1033
 
     Visit: http://somafm.com/ for a list of streams and descriptions
 EOF
@@ -19,8 +19,9 @@ fi
 
 stream=$1
 streamurl="http://somafm.com/startstream=$stream.pls"
-playedurl="http://somafm.com/play/$stream"
-mplayer -really-quiet -vo none -ao alsa $streamurl &>/dev/null &
+playedurl="http://somafm.com/$stream/played"
+mplayer -allow-dangerous-playlist-parsing \
+        -really-quiet -vo none -ao alsa $streamurl &>/dev/null &
 pid=$!
 trap 'kill -9 $pid;' TERM QUIT INT
-watch -n5 -t "links -dump $playedurl | sed -n '/Music Director.*/,/SomaFM/p'"
+watch -n5 -t "links -dump $playedurl | sed -n '/.*:[.\n]*/,/SomaFM time is:/p'"
