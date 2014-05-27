@@ -2,6 +2,8 @@
 #
 # vim:ts=4:sw=4:sts=4:et:ft=sh:
 
+hsetroot -solid "#000000"
+
 xsetroot -cursor_name left_ptr
 
 xset mouse 2 10
@@ -28,7 +30,7 @@ dropbox start
 
 keepassx -min -lock &
 
-xhost local:boinc
+xcompmgr &
 
 # XMonad tiling window manager
 exec xmonad
