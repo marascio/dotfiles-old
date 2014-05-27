@@ -4,6 +4,8 @@
 " vim:ts=4:sw=4:sts=4:et:ft=vim
 " ---------------------------------------------------------------------------- 
 
+execute pathogen#infect()
+
 set nocompatible
 
 " Check for 256 colors and set colorscheme appropriatelt
@@ -72,8 +74,8 @@ inoremap          \now       <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
 noremap           \now           "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>p
 
 noremap  <silent> \slist     <ESC>:SessionList<CR>
-noremap  <silent> \ssave     <ESC>:call lrm:session_save(0)<CR>
-noremap  <silent> \ssaveas   <ESC>:call lrm:session_save(1)<CR>
+noremap  <silent> \ssave     <ESC>:call LRM_session_save(0)<CR>
+noremap  <silent> \ssaveas   <ESC>:call LRM_session_save(1)<CR>
 nnoremap <silent> <F2>       <ESC>:NERDTreeToggle<CR>
 nnoremap <silent> <F3>       <ESC>:NERDTreeFind<CR>
 
@@ -95,8 +97,8 @@ augroup end
 
 au BufRead,BufNewFile *.py               set autoindent ts=4 sw=4 sts=4 expandtab
 au BufRead,BufNewFile *.rb               set autoindent
-au SessionLoadPost    *                  call lrm:session_autoload()
-au BufReadPost        *                  call lrm:set_cursor_last_edit()
+au SessionLoadPost    *                  call LRM_session_autoload()
+au BufReadPost        *                  call LRM_set_cursor_last_edit()
 
 " Auto-insert file-type specific skeleton templates when creating new files.
 autocmd BufNewFile    *diary/*.wiki      TSkeletonSetup diary.template
@@ -106,14 +108,14 @@ set sessionoptions=blank,buffers,curdir,folds,help,localoptions,tabpages,winsize
 let sessionman_save_on_exit=0
 
 " go to the last location in the file if one exists
-function! lrm:set_cursor_last_edit()
+function! LRM_set_cursor_last_edit()
     if line("'\"") > 0 && line("'\"") <= line("$") 
         exe "normal g'\""
     endif
 endfunction
 
-function! lrm:session_save(saveas)
-    call lrm:wikidiary_calendar_close()
+function! LRM_session_save(saveas)
+    call LRM_wikidiary_calendar_close()
 
     if a:saveas == 1
         :SessionSaveAs
@@ -121,15 +123,15 @@ function! lrm:session_save(saveas)
         :SessionSave
     endif
 
-    call lrm:wikidiary_calendar_open()
+    call LRM_wikidiary_calendar_open()
 endfunction
 
 " Use to auto-execute commands for specific sessions that are loaded. 
-function! lrm:session_autoload()
-    call lrm:wikidiary_calendar_open()
+function! LRM_session_autoload()
+    call LRM_wikidiary_calendar_open()
 endfunction
 
-function! lrm:wikidiary_calendar_open()
+function! LRM_wikidiary_calendar_open()
     if v:this_session !~ 'wikidiary$'
         return
     endif
@@ -139,7 +141,7 @@ function! lrm:wikidiary_calendar_open()
     :0          " go to first line of buffer
 endfunction
 
-function! lrm:wikidiary_calendar_close()
+function! LRM_wikidiary_calendar_close()
     if v:this_session !~ 'wikidiary$'
         return
     endif
